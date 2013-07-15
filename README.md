@@ -13,7 +13,7 @@ For more information on Karma see the [homepage].
 
 1. Make sure you're using Karma 0.9+ `karma --version`. You may install the latest version using `npm install -g karma@canary`.
 
-2. Install the plugin `npm install -g karma-osx-reporter`.
+2. Install the plugin `npm install -g karma-handlebars-preprocessor`.
 
 3. Add dependency to the plugin section in Karma config file (Karma 0.9.0 - 0.9.2):
 
