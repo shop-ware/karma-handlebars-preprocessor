@@ -1,26 +1,36 @@
 {
   "name": "karma-handlebars-preprocessor",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A Karma plugin. Compile handlebars template on the fly.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/hanachin/karma-handlebars-preprocessor.git"
+    "url": "git://github.com/petrbela/karma-handlebars-preprocessor.git"
   },
   "keywords": [
     "karma-plugin",
     "preprocessor",
-    "coffee"
+    "handlebars"
   ],
-  "author": "Vojta Jina <vojta.jina@gmail.com>",
+  "authors": [
+    "hanachin <hanachin@gmail.com>",
+    "Petr Bela <github@petrbela.com>"
+  ],
   "dependencies": {
-    "handlebars": "1.0.10"
+    "handlebars": "1.0.12"
   },
   "peerDependencies": {
     "karma": "~0.9"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.6.3",
+    "mocha": "~1.12.0",
+    "chai": "~1.7.2",
+    "grunt": "*",
+    "grunt-simple-mocha": "*"
   },
   "license": "MIT"
 }
