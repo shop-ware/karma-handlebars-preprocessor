@@ -85,6 +85,10 @@ module.exports = function(config) {
 };
 ```
 
+## Note on version
+
+This plugin precompiles templates using handlebars.js version `1.0.0`. You'll need to provide handlebars.runtime.js of the same version in your page.
+
 
 ## License
 
