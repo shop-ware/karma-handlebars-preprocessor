@@ -1,6 +1,6 @@
 {
   "name": "karma-handlebars-preprocessor",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A Karma plugin. Compile handlebars template on the fly.",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
     "handlebars": "1.0.12"
   },
   "peerDependencies": {
-    "karma": "~0.9"
+    "karma": ">=0.9"
   },
   "devDependencies": {
     "coffee-script": "~1.6.3",

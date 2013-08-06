@@ -11,32 +11,28 @@ For more information on Karma see the [homepage].
 
 ## Installation
 
-1. Make sure you're using Karma 0.9+ `karma --version`. You may install the latest version using `npm install -g karma@canary`.
+1. Install Karma and karma-osx-reporter plugin. The plugin requires Karma 0.9+, but Karma's stable version is now 0.10 so it's pretty easy.
 
-2. Install the plugin `npm install -g karma-handlebars-preprocessor`.
+  a. Globally. System-wide with `karma` available on command line.
 
-3. Add dependency to the plugin section in Karma config file (Karma 0.9.0 - 0.9.2):
+    ```
+    npm install -g karma
+    npm install -g karma-handlebars-preprocessor
+    ```
 
-  ```js
-    plugins = [
-      'karma-handlebars-preprocessor'
-    ];
+  b. Locally. If you want to install Karma to your project instead, add the dependencies to `package.json` and run `npm install`:
 
-  ```
-
-  or, if you're using the new module-based config file format (Karma 0.9.3+):
-
-  ```js
-    module.exports = function(karma) {
-      karma.configure({
-        ...
-        plugins: [
-          'karma-handlebars-preprocessor'
-        ],
-        ...
-      })
+    ```js
+    "devDependencies": {
+      "karma": ">=0.9",
+      "karma-handlebars-preprocessor": "*"
     }
-  ```
+    ```
+
+    If you install locally, you'll need to run Karma using `node_modules/.bin/karma`.
+
+  In any case, the plugin needs to be installed as a peer dependency to Karma (i.e. in the sibling folder). This just means you cannot use global Karma with local plugins or vice-versa.
+
 
 4. Define it as a reporter in the config file
 
