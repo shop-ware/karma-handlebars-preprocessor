@@ -19,6 +19,23 @@ var createHandlebarsPreprocessor = function(args, config, logger, basePath) {
     return filepath.replace(/^.*\/([^\/]+)\.hbs$/, '$1');
   };
 
+  var isPartial = args.isPartial || config.isPartial || function(filepath) {
+    return false;
+  };
+
+  function registerPartialScript(templateName, content) {
+    return "(function() { Handlebars.registerPartial('" + templateName + "', "
+      + "Handlebars.template(" + handlebars.precompile(content) + ")"
+      + ");})();";
+  }
+
+  function registerTemplateScript(templatesVariable, templateName, content) {
+    return "(function() {" + templatesVariable + " = " + templatesVariable + " || {};"
+      + templatesVariable + "['" + templateName + "'] = Handlebars.template("
+      + handlebars.precompile(content)
+      + ");})();";
+  }
+
   var templates = args.templates || config.templates || "Handlebars.templates";
 
   return function(content, file, done) {
@@ -30,10 +47,11 @@ var createHandlebarsPreprocessor = function(args, config, logger, basePath) {
     var template = templateName(file.originalPath);
 
     try {
-      processed = "(function() {" + templates + " = " + templates + " || {};"
-      + templates + "['" + template + "'] = Handlebars.template("
-      + handlebars.precompile(content)
-      + ");})();";
+      if (isPartial(file.originalPath)) {
+        processed = registerPartialScript(template, content);
+      } else {
+        processed = registerTemplateScript(templates, template, content);
+      }
     } catch (e) {
       log.error('%s\n  at %s', e.message, file.originalPath);
     }

@@ -46,6 +46,15 @@ describe 'preprocessor:handlebars', ->
 
       preprocessor('', file, done)
 
+    it 'should have configurable isPartial', ->
+      preprocessor = factory({}, {isPartial: (filepath) -> filepath.match(/^.*\/_[^\/]/)}, logger, {})
+
+      done = (result) ->
+        expect(result).to.include("Handlebars.registerPartial('_albumtile',")
+      file = {originalPath: 'app/assets/javascripts/modules/albums/templates/_albumtile.hbs'}
+
+      preprocessor('', file, done)
+
     it 'should have configurable transformPath', ->
       preprocessor = factory({}, {transformPath: (filepath) -> filepath.replace(/\.hbs$/, '.jsx')}, logger, {})
 
