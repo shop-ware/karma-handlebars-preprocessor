@@ -30,7 +30,7 @@ var createHandlebarsPreprocessor = function(args, config, logger, basePath) {
   }
 
   function registerTemplateScript(templatesVariable, templateName, content) {
-    return "(function() {" + templatesVariable + " = " + templatesVariable + " || {};"
+    return "(function() {" + templatesVariable + " = window." + templatesVariable + " || {};"
       + templatesVariable + "['" + templateName + "'] = Handlebars.template("
       + handlebars.precompile(content)
       + ");})();";
