@@ -20,7 +20,7 @@
     "Petr Bela <github@petrbela.com>"
   ],
   "dependencies": {
-    "handlebars": ">= 2.0.0"
+    "handlebars": "*"
   },
   "peerDependencies": {
     "karma": ">=0.9"
